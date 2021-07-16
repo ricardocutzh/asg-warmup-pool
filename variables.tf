@@ -7,13 +7,13 @@ variable identifier {
 
 variable min_size {
   type        = number
-  default     = 1
+  default     = 0
 }
 
 
 variable max_size {
   type        = number
-  default     = 1
+  default     = 0
 }
 
 variable warm_pool_min_size {

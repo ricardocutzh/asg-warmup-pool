@@ -38,4 +38,4 @@ ID=$(curl  http://169.254.169.254/latest/meta-data/instance-id)
 
 sudo docker build --build-arg INSTANCE_ID=$ID -t simple:app .
 
-sudo docker run -d --rm -p 8080:80 simple:app
+sudo docker run -d --restart=always -p 8080:80 simple:app

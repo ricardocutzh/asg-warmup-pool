@@ -74,9 +74,6 @@ resource "aws_autoscaling_group" "asg" {
     min_size                    = var.pool_min_size
     max_group_prepared_capacity = var.max_group_prepared_capacity
   }
-}
 
-resource "aws_autoscaling_attachment" "asg_attachment_bar" {
-  autoscaling_group_name = aws_autoscaling_group.asg.id
-  alb_target_group_arn   = var.target_group_arn
+  # target_group_arns = [var.target_group_arn]
 }
