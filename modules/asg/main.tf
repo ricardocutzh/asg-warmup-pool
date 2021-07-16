@@ -7,6 +7,9 @@ locals {
 }
 
 resource "aws_launch_template" "launch_template" {
+  iam_instance_profile {
+    arn = var.iam_instance_profile
+  }
   ebs_optimized               = var.ebs_optimized
   instance_type               = var.instance_type
   user_data                   = var.user_data_base64
@@ -65,4 +68,15 @@ resource "aws_autoscaling_group" "asg" {
       key                 = tag.key
     }
   }
+
+  warm_pool {
+    pool_state                  = var.pool_state
+    min_size                    = var.pool_min_size
+    max_group_prepared_capacity = var.max_group_prepared_capacity
+  }
+}
+
+resource "aws_autoscaling_attachment" "asg_attachment_bar" {
+  autoscaling_group_name = aws_autoscaling_group.asg.id
+  alb_target_group_arn   = var.target_group_arn
 }

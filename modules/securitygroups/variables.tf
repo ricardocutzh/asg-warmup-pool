@@ -67,6 +67,14 @@ variable "service_ingress_rule_list" {
       from_port                = 8080
       protocol                 = "tcp"
       to_port                  = 8080
+    },
+    {
+      source_security_group_id = null
+      cidr_blocks              = ["0.0.0.0/0"]
+      description              = "All Web Traffic (8080)"
+      from_port                = 22
+      protocol                 = "tcp"
+      to_port                  = 22
     }
   ]
   type = list(object({

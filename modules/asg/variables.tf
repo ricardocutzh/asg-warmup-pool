@@ -88,3 +88,23 @@ variable "region" {
   default     = "us-west-2"
   type        = string
 }
+
+variable pool_state {
+  type        = string
+  default     = "Stopped"
+}
+
+variable pool_min_size {
+  type        = number
+  default     = 1
+}
+
+variable max_group_prepared_capacity {
+  type        = number
+  default     = 5
+}
+
+
+variable target_group_arn {
+  type        = string
+}
